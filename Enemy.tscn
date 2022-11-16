@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ball_floating64x.png" type="Texture" id=1]
+[ext_resource path="res://Enemy.gd" type="Script" id=2]
+[ext_resource path="res://hitted.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.0278
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 16.94
+flag_disable_z = true
+spread = 0.0
+initial_velocity = 5.0
+initial_velocity_random = 0.7
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.5
+color = Color( 1, 0, 0, 1 )
+anim_speed = 10.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Hit"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.05, 0.05 ), Vector2( 0.357506, 0.357506 ) ]
+}
+
+[node name="Enemy" type="KinematicBody2D"]
+position = Vector2( 421.308, 250.717 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 87.8802, 16.8006 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+hframes = 6
+frame = 1
+
+[node name="enemy" type="Area2D" parent="."]
+
+[node name="CollisionArea" type="CollisionShape2D" parent="enemy"]
+position = Vector2( 87.1686, 17.7356 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 87.1686, 17.7356 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+visible = false
+position = Vector2( 87.1689, 17.3583 )
+amount = 25
+process_material = SubResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 88.4722, 16.6184 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="hitted" type="AnimationPlayer" parent="Sprite2"]
+anims/Hit = SubResource( 4 )

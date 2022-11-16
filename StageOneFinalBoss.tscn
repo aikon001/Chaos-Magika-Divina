@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ball_floating64x.png" type="Texture" id=1]
+[ext_resource path="res://EnemyBig.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnemyBigBoss.gd" type="Script" id=3]
+[ext_resource path="res://StageOneFinalBoss.gd" type="Script" id=4]
+[ext_resource path="res://bullet_boss.gd" type="Script" id=5]
+[ext_resource path="res://bullet.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 112.657
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.7
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+
+[node name="StageOneFinalBoss" type="KinematicBody2D"]
+position = Vector2( 490, 277 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+hframes = 6
+frame = 5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -2.58472, 1.29236 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.58472, 1.29236 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+
+[node name="bigenemies" type="Node2D" parent="."]
+
+[node name="Bigenemy" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( -278.275, 129.751 )
+script = ExtResource( 3 )
+
+[node name="Bigenemy4" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( 91.5941, 117.705 )
+script = ExtResource( 3 )
+
+[node name="Bigenemy5" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( 134.274, -81.5094 )
+script = ExtResource( 3 )
+
+[node name="Bigenemy6" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( -101.729, -220.261 )
+script = ExtResource( 3 )
+
+[node name="Bigenemy2" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( -317.922, -62.7196 )
+script = ExtResource( 3 )
+
+[node name="Bigenemy3" parent="bigenemies" instance=ExtResource( 2 )]
+position = Vector2( -79.1051, 230.544 )
+script = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 1184.02, -665.833 )
+
+[node name="Bullet" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -118.738, 1.31476 )
+script = ExtResource( 5 )
+
+[node name="Bullet2" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -106.461, -55.1612 )
+rotation = 0.392699
+script = ExtResource( 5 )
+
+[node name="Bullet3" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -79.4508, -84.6269 )
+rotation = 0.785398
+script = ExtResource( 5 )
+
+[node name="Bullet4" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -45.0742, -101.815 )
+rotation = 1.1781
+script = ExtResource( 5 )
+
+[node name="Bullet5" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -15.6084, -116.548 )
+rotation = 1.5708
+script = ExtResource( 5 )
+
+[node name="Bullet6" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 37.1844, -107.954 )
+rotation = 1.9635
+script = ExtResource( 5 )
+
+[node name="Bullet7" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 69.1053, -87.0824 )
+rotation = 2.35619
+script = ExtResource( 5 )
+
+[node name="Bullet8" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 99.7988, -57.6168 )
+rotation = 2.74889
+script = ExtResource( 5 )
+
+[node name="Bullet9" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 116.987, -17.1014 )
+rotation = 3.14159
+script = ExtResource( 5 )
+
+[node name="Bullet10" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 109.621, 30.7803 )
+rotation = 3.53429
+script = ExtResource( 5 )
+
+[node name="Bullet11" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 93.6602, 70.068 )
+rotation = 3.92699
+script = ExtResource( 5 )
+
+[node name="Bullet12" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 69.1053, 97.0782 )
+rotation = 4.31969
+script = ExtResource( 5 )
+
+[node name="Bullet13" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 34.7288, 109.356 )
+rotation = 4.71239
+script = ExtResource( 5 )
+
+[node name="Bullet14" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1.5799, 114.266 )
+rotation = 5.10509
+script = ExtResource( 5 )
+
+[node name="Bullet15" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -48.7574, 111.811 )
+rotation = 5.49779
+script = ExtResource( 5 )
+
+[node name="Bullet16" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -81.9063, 92.1672 )
+rotation = 5.89049
+script = ExtResource( 5 )
+
+[node name="Bullet17" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -107.689, 55.3351 )
+rotation = 6.28319
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

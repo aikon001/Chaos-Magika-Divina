@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/edo.obj-eb078713270a5bf621352cb88f7f2e25.mesh"
+
+[deps]
+
+files=[ "res://.import/edo.obj-eb078713270a5bf621352cb88f7f2e25.mesh" ]
+
+source_file="res://edo.obj"
+dest_files=[ "res://.import/edo.obj-eb078713270a5bf621352cb88f7f2e25.mesh", "res://.import/edo.obj-eb078713270a5bf621352cb88f7f2e25.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

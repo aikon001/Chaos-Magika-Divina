@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://edo.dae" type="PackedScene" id=1]
+[ext_resource path="res://Spatial.gd" type="Script" id=2]
+[ext_resource path="res://sky.png" type="Texture" id=3]
+[ext_resource path="res://Sprite3D.gd" type="Script" id=4]
+[ext_resource path="res://main.tscn" type="PackedScene" id=5]
+[ext_resource path="res://EightBitDragon-anqx.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://enemy_spawner.gd" type="Script" id=7]
+[ext_resource path="res://VoiceTimer.gd" type="Script" id=8]
+[ext_resource path="res://Sho Fish - Init.ogg" type="AudioStream" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
+
+[node name="stage1" type="Node2D"]
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.394, 0, 0.694412 )
+script = ExtResource( 2 )
+
+[node name="edo" parent="Spatial" instance=ExtResource( 1 )]
+transform = Transform( 1, -0.000509417, -0.000707404, 0.000509879, 1, 0.000640928, 0.000707071, -0.000641295, 1, -4.22461, -1.37762, -1.13959 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.933142, 0.359508, 0, -0.359508, 0.933142, 1.3635, 1.75821, 2.22077 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 4.43179, 0, 0, 0, 2.91863, 0, 0, 0, 1, 1.13919, 1.92747, -2.43059 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="main" parent="." instance=ExtResource( 5 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 295.949
+margin_top = 246.84
+margin_right = 760.949
+margin_bottom = 276.84
+custom_fonts/font = SubResource( 1 )
+text = "STAGE ONE : Blossom castle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemy_spawner" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="spawn_timer1" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer2" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer3" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer4" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer5" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer6" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer7" type="Timer" parent="enemy_spawner"]
+
+[node name="spawn_timer8" type="Timer" parent="enemy_spawner"]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+autoplay = true
+
+[node name="VoiceTimer" type="Timer" parent="."]
+wait_time = 6.5
+autostart = true
+script = ExtResource( 8 )
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="VoiceTimer"]
+volume_db = 24.0
+[connection signal="timeout" from="enemy_spawner/spawn_timer1" to="enemy_spawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer2" to="enemy_spawner" method="_on_spawn_timer2_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer3" to="enemy_spawner" method="_on_spawn_timer3_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer4" to="enemy_spawner" method="_on_spawn_timer4_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer5" to="enemy_spawner" method="_on_spawn_timer5_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer6" to="enemy_spawner" method="_on_spawn_timer6_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer7" to="enemy_spawner" method="_on_spawn_timer7_timeout"]
+[connection signal="timeout" from="enemy_spawner/spawn_timer8" to="enemy_spawner" method="_on_spawn_timer8_timeout"]
+[connection signal="timeout" from="VoiceTimer" to="VoiceTimer" method="_on_VoiceTimer_timeout"]
